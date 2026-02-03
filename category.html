@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục - Nhà hàng</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            padding-top: 90px;
+            padding-bottom: 30px;
+        }
+
+        .navbar {
+            background: white !important;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #667eea !important;
+            text-decoration: none;
+        }
+
+        .table-selector select {
+            width: 120px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .cart-btn {
+            position: relative;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-btn:hover {
+            background: linear-gradient(135deg, #ee5a6f, #ff6b6b);
+            color: white;
+        }
+
+        .cart-badge {
+            background: white;
+            color: #ff6b6b;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-btn:hover {
+            color: #764ba2;
+        }
+
+        .category-header {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .15);
+        }
+
+        .category-title {
+            color: #667eea;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .menu-container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .15);
+        }
+
+        .menu-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .menu-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+
+        .image-modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-modal-content p {
+            color: white;
+            font-size: 18px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .image-modal-close:hover {
+            color: #ff6b6b;
+        }
+
+        .menu-info {
+            padding: 15px;
+        }
+
+        .menu-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .menu-description {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 10px;
+            height: 38px;
+            overflow: hidden;
+        }
+
+        .menu-price {
+            font-weight: bold;
+            color: #ff6b6b;
+            font-size: 18px;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+
+        .btn-add:hover {
+            background: linear-gradient(135deg, #44a08d, #4ecdc4);
+            color: white;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4ecdc4;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 9999;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        .item-count {
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar fixed-top shadow-sm">
+        <div class="container">
+            <a href="./menu.html" class="navbar-brand">🍽️ Nhà Hàng</a>
+
+            <a href="./Cart.html" class="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Thực đơn</span>
+                <span class="cart-badge" id="cart-count">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="category-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="./menu.html" class="back-btn mb-2">
+                        <i class="fas fa-arrow-left"></i> Quay lại Menu
+                    </a>
+                    <h2 class="category-title" id="category-name">Đang tải...</h2>
+                    <span class="item-count" id="item-count"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-container">
+            <div class="row" id="category-items-container"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="./demoData/demoMenu.js"></script>
+    <script src="./javascript/category.js"></script>
+</body>
+
+</html>
