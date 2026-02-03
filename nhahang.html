@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>🍳 Màn hình nhà bếp</title>
+  <link rel="stylesheet" href="nhahang.css">
+</head>
+<body>
+
+<header>
+  <h1>🍳 Màn hình nhà bếp</h1>
+  <p>Quản lý đơn hàng theo thời gian thực</p>
+</header>
+
+<div class="toolbar">
+  <button onclick="setFilter('all')">Tất cả</button>
+  <button onclick="setFilter('new')">Mới</button>
+  <button onclick="setFilter('doing')">Đang làm</button>
+  <button onclick="setFilter('done')">Hoàn thành</button>
+</div>
+
+<div id="orders" class="orders"></div>
+
+<script src="nhahang.js"></script>
+</body>
+</html>

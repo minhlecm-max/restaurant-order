@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  padding: 30px;
+}
+
+header {
+  text-align: center;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.toolbar {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.toolbar button {
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background: #ffc107;
+}
+
+.orders {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.order-card {
+  background: #5f5b7a;
+  border-radius: 18px;
+  padding: 15px;
+  position: relative;
+  z-index: 10;              /* ⭐ FIX CLICK */
+}
+
+.order-card h3 {
+  margin: 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: gold;
+  color: black;
+  font-size: 12px;
+  margin: 6px 0;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.actions button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  pointer-events: auto;     /* ⭐ FIX CLICK */
+}
+
+.btn-doing { background: #3498db; color: white; }
+.btn-done  { background: #2ecc71; color: white; }
+.btn-del   { background: #e74c3c; color: white; }

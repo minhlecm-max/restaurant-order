@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>🍽️ Đặt món nhà hàng</title>
+    <link rel="stylesheet" href="customer.css">
+</head>
+<body>
+
+    <header>
+        <h1>🍜 Nhà hàng Việt</h1>
+        <p>Đặt món nhanh – Bếp nhận liền</p>
+    </header>
+
+    <!-- THÔNG TIN KHÁCH -->
+    <section class="customer-info">
+        <input type="text" id="customerName" placeholder="Tên khách">
+        <input type="number" id="tableNumber" placeholder="Số bàn">
+    </section>
+
+    <!-- MENU -->
+    <section class="menu-section">
+        <h2>🍜 Món chính</h2>
+        <div class="menu" id="mainFood"></div>
+
+        <h2>🍟 Ăn vặt</h2>
+        <div class="menu" id="snack"></div>
+
+        <h2>🥤 Nước uống</h2>
+        <div class="menu" id="drink"></div>
+    </section>
+
+    <!-- GIỎ HÀNG -->
+    <section class="cart-section">
+        <h2>🛒 Giỏ hàng</h2>
+        <ul id="cart"></ul>
+        <button onclick="submitOrder()">Đặt món</button>
+    </section>
+
+    <script src="customer.js"></script>
+</body>
+</html>
